@@ -1,7 +1,10 @@
-#!/usr/local/bin/perl
+#!/usr/bin/perl
 
 use strict;
-require Suika::CGI;
+
+for (split /[&;]/, $main::ENV{QUERY_STRING}) {
+  
+}
 
 my %ex_point1 = ();
 (
@@ -89,6 +92,7 @@ sub kanzan (%%%%) {
   ($percent, $object_percent, \%kanzaned1, \%kanzaned2);
 }
 
+%Suika::CGI::param = %{__get_parameter ()};
 my (%mypoint1, %mypoint2, %haiten1, %haiten2);
 if ($Suika::CGI::param{newform} ne 'no') {
   %mypoint1 = %ex_point1;
@@ -142,15 +146,17 @@ sub output_html (%%%%%) {
 <head>
 <title>配点換算</title>
 <link rev="made" href="mailto:w\@suika.fam.cx">
-<link rel="contents" href="http://tomikou.net/">
+<link rel="contents" href="http://tomikou.net/tokshuu/kanzan.html" title="換算点算出システム
+">
 <link rel="contents" href="/chuubu/">
-<style type="text/css">
+<link rel="stylesheet" href="/s/default/xhtml1" media="all">
+<style type="text/css" media="all">
 input	{width: 3em}
 </style>
 </head>
 <body>
 <h1>配点換算</h1>
-<form action="kanzan" method="post" accept-charset="iso-2022-jp, iso-2022-jp-3">
+<form action="kanzan" method="post" accept-charset="iso-2022-jp">
 <table>
 <thead>
 <tr>
@@ -263,16 +269,48 @@ input	{width: 3em}
 </form>
 
 <div class="navigation">
-[<a href="/gate/cvs/perl/kanzan/" xml:lang="en">source</a>]
+[<a href="/gate/cvs/perl/kanzan/" lang="en">source</a>]
 </div>
 </body>
 </html>
 EOH
 }
 
+sub __get_parameter () {
+  my @src;
+  
+  ## Query-string of Request-URI
+  my $qs = $main::ENV{QUERY_STRING};
+  push @src, $qs if (index ($qs, '=') > -1);
+  
+  ## Entity-body
+  if ($main::ENV{REQUEST_METHOD} eq 'POST') {
+    my $mt = $main::ENV{CONTENT_TYPE};
+    if ($mt =~ m<^application/(?:x-www|sgml)-form-urlencoded\b>) {
+      my $body;
+      read STDIN, $body, $main::ENV{CONTENT_LENGTH};
+      push @src, $body;
+    }
+  }
+  
+  my %temp_params;
+  for my $src (@src) {
+    for (split /[;&]/, $src) {
+      my ($name, $val) = split '=', $_, 2;
+      for ($name, $val) {
+        tr/+/ /;
+        s/%([0-9A-Fa-f][0-9A-Fa-f])/pack 'C', hex $1/ge;
+      }
+      $temp_params{$name} = $val;
+    }
+  }
+  \%temp_params;
+}
+
+
 =head1 LICENSE
 
-Copyright 2001-2002 wakaba E<lt>w@suika.fam.cxE<gt>.
+Copyright 2001-2003 Wakaba E<lt>w@suika.fam.cxE<gt>.
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -291,5 +329,5 @@ Boston, MA 02111-1307, USA.
 
 =cut
 
-1;	# $Date: 2002/09/04 09:02:38 $
-### kanzan.cgi ends here
+1;	# $Date: 2003/11/05 12:52:46 $
+
