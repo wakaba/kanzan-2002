@@ -68,7 +68,7 @@ sub kanzan (%%%%) {
     $kanzaned1{_ALL} += $kanzaned1{$subject};
     $$full1{_ALL} += $$full1{$subject};
   }
-  $kanzaned1{_PERCENT} = 100*$kanzaned1{_ALL}/$$full1{_ALL};
+  $kanzaned1{_PERCENT} = $$full1{_ALL}==0?0:100*$kanzaned1{_ALL}/$$full1{_ALL};
   $$full2{_ALL} = 0;
   for my $subject (keys %$full2) {
     next if $subject =~ /^_/;
@@ -76,12 +76,14 @@ sub kanzan (%%%%) {
     $kanzaned2{_ALL} += $kanzaned2{$subject};
     $$full2{_ALL} += $$full2{$subject};
   }
-  $kanzaned2{_PERCENT} = 100*$kanzaned2{_ALL}/$$full2{_ALL};
+  $kanzaned2{_PERCENT} = $$full2{_ALL}==0?0:100*$kanzaned2{_ALL}/$$full2{_ALL};
   
   my ($percent, $object_percent);
-  $percent = 100*($kanzaned1{_ALL}+$kanzaned2{_ALL})
+  $percent = ($$full1{_ALL}+$$full2{_ALL})==0?0:
+             100*($kanzaned1{_ALL}+$kanzaned2{_ALL})
                 /($$full1{_ALL}+$$full2{_ALL});
-  $object_percent = ($$point1{_OBJECT}*$$full1{_ALL}
+  $object_percent = ($$full1{_ALL}+$$full2{_ALL})==0?0:
+                    ($$point1{_OBJECT}*$$full1{_ALL}
                     +$$point2{_OBJECT}*$$full2{_ALL})
                 /($$full1{_ALL}+$$full2{_ALL});
   ($percent, $object_percent, \%kanzaned1, \%kanzaned2);
@@ -139,7 +141,7 @@ sub output_html (%%%%%) {
 <html lang="ja">
 <head>
 <title>«€≈¿¥πªª</title>
-<link rev="made" href="mailto:w@suika.fam.cx">
+<link rev="made" href="mailto:w\@suika.fam.cx">
 <link rel="contents" href="http://tomikou.net/">
 <link rel="contents" href="/chuubu/">
 <style type="text/css">
@@ -289,5 +291,5 @@ Boston, MA 02111-1307, USA.
 
 =cut
 
-1;	# $Date: 2002/09/04 08:57:28 $
+1;	# $Date: 2002/09/04 09:02:38 $
 ### kanzan.cgi ends here
