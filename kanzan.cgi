@@ -3,7 +3,8 @@
 use strict;
 require Suika::CGI;
 
-my %ex_point1 = (
+my %ex_point1 = ();
+(
   kokugo	=> 54,
   suugaku	=> 55,
   eigo	=> 57,
@@ -16,7 +17,8 @@ my %ex_point1 = (
   _OBJECT	=> 57,
 );
 
-my %ex_point2 = (
+my %ex_point2 = ();
+(
   kokugo	=> 53,
   suugaku	=> 55,
   eigo	=> 55,
@@ -29,7 +31,8 @@ my %ex_point2 = (
   _OBJECT	=> 58,
 );
 
-my %ex_haiten1 = (
+my %ex_haiten1 = ();
+(
   kokugo	=> 80,
   suugaku	=> 80,
   eigo	=> 80,
@@ -41,7 +44,8 @@ my %ex_haiten1 = (
   seibutsu	=> 0,
 );
 
-my %ex_haiten2 = (
+my %ex_haiten2 = ();
+(
   kokugo	=> 0,
   suugaku	=> 300,
   eigo	=> 150,
@@ -102,7 +106,9 @@ if ($Suika::CGI::param{newform} ne 'no') {
 my ($percent, $object, $kanzan1, $kanzan2)
  = kanzan ({%mypoint1} => {%haiten1}, {%mypoint2} => {%haiten2});
 
-print STDOUT "Content-Type: text/html; charset=euc-jisx0213
+print STDOUT "Content-Type: text/html; charset=euc-jp
+Content-Style-Type: text/css
+Content-Language: ja
 
 ";
 output_html (\%mypoint1 => \%haiten1 => $kanzan1,
@@ -133,6 +139,9 @@ sub output_html (%%%%%) {
 <html lang="ja">
 <head>
 <title>«€≈¿¥πªª</title>
+<link rev="made" href="mailto:w@suika.fam.cx">
+<link rel="contents" href="http://tomikou.net/">
+<link rel="contents" href="/chuubu/">
 <style type="text/css">
 input	{width: 3em}
 </style>
@@ -250,7 +259,35 @@ input	{width: 3em}
 <input type="submit" value="OK">
 </p>
 </form>
+
+<div class="navigation">
+[<a href="/gate/cvs/perl/kanzan/" xml:lang="en">source</a>]
+</div>
+</body>
+</html>
 EOH
 }
 
-1;
+=head1 LICENSE
+
+Copyright 2001-2002 wakaba E<lt>w@suika.fam.cxE<gt>.
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; see the file COPYING.  If not, write to
+the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+Boston, MA 02111-1307, USA.
+
+=cut
+
+1;	# $Date: 2002/09/04 08:57:28 $
+### kanzan.cgi ends here
