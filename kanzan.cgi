@@ -150,6 +150,7 @@ sub output_html (%%%%%) {
 ">
 <link rel="contents" href="/chuubu/">
 <link rel="stylesheet" href="/s/default/xhtml1" media="all">
+<link rel="help" href="intro" title="説明" />
 <style type="text/css" media="all">
 input	{width: 3em}
 </style>
@@ -270,6 +271,7 @@ input	{width: 3em}
 
 <div class="navigation">
 [<a href="/gate/cvs/perl/kanzan/" lang="en">source</a>]
+[<a href="intro">説明</a>]
 </div>
 </body>
 </html>
@@ -310,7 +312,7 @@ sub __get_parameter () {
 
 =head1 LICENSE
 
-Copyright 2001-2003 Wakaba E<lt>w@suika.fam.cxE<gt>.
+Copyright 2001-2004 Wakaba E<lt>w@suika.fam.cxE<gt>.
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -329,5 +331,5 @@ Boston, MA 02111-1307, USA.
 
 =cut
 
-1;	# $Date: 2003/11/05 12:52:46 $
+1;	# $Date: 2004/11/16 07:37:01 $
 

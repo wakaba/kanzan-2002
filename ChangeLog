@@ -1,3 +1,7 @@
+2004-11-16  Wakaba  <wakaba@suika.fam.cx>
+
+	* intro.ja.html: New document.
+
 2003-11-05  Wakaba  <wakaba@suika.fam.cx>
 
 	* kanzan.cgi: Don't use Suika::CGI module.
