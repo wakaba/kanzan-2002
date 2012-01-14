@@ -129,6 +129,14 @@ sub diffmark ($) {
   return '◎';
 }
 
+sub htescape ($) {
+  my $s = shift;
+  $s =~ s/&/&amp;/g;
+  $s =~ s/</&lt;/g;
+  $s =~ s/\"/&quot;/g;
+  return $s;
+} # htescape
+
 sub output_html (%%%%%) {
   my ($p1 => $h1 => $k1, $p2 => $h2 => $k2, %misc) = @_;
   for my $n ($$k1{_PERCENT}, $$k2{_PERCENT}, $misc{percent}, $misc{object}) {
@@ -170,64 +178,64 @@ input	{width: 3em}
 <tbody>
 <tr>
 <th rowspan="3">一次</th><th>持ち点</th>
-<td><input type="text" name="kokugo1" value="$$p1{kokugo}"></td>
-<td><input type="text" name="suugaku1" value="$$p1{suugaku}"></td>
-<td><input type="text" name="eigo1" value="$$p1{eigo}"></td>
-<td><input type="text" name="sekaishi1" value="$$p1{sekaishi}"></td>
-<td><input type="text" name="nihonshi1" value="$$p1{nihonshi}"></td>
-<td><input type="text" name="chiri1" value="$$p1{chiri}"></td>
-<td><input type="text" name="butsuri1" value="$$p1{butsuri}"></td>
-<td><input type="text" name="kagaku1" value="$$p1{kagaku}"></td>
-<td><input type="text" name="seibutsu1" value="$$p1{seibutsu}"></td>
+<td><input type="text" name="kokugo1" value="@{[htescape $$p1{kokugo}]}"></td>
+<td><input type="text" name="suugaku1" value="@{[htescape $$p1{suugaku}]}"></td>
+<td><input type="text" name="eigo1" value="@{[htescape $$p1{eigo}]}"></td>
+<td><input type="text" name="sekaishi1" value="@{[htescape $$p1{sekaishi}]}"></td>
+<td><input type="text" name="nihonshi1" value="@{[htescape $$p1{nihonshi}]}"></td>
+<td><input type="text" name="chiri1" value="@{[htescape $$p1{chiri}]}"></td>
+<td><input type="text" name="butsuri1" value="@{[htescape $$p1{butsuri}]}"></td>
+<td><input type="text" name="kagaku1" value="@{[htescape $$p1{kagaku}]}"></td>
+<td><input type="text" name="seibutsu1" value="@{[htescape $$p1{seibutsu}]}"></td>
 </tr>
 <tr>
 <th>配点</th>
-<td><input type="text" name="kokugoH1" value="$$h1{kokugo}"></td>
-<td><input type="text" name="suugakuH1" value="$$h1{suugaku}"></td>
-<td><input type="text" name="eigoH1" value="$$h1{eigo}"></td>
-<td><input type="text" name="sekaishiH1" value="$$h1{sekaishi}"></td>
-<td><input type="text" name="nihonshiH1" value="$$h1{nihonshi}"></td>
-<td><input type="text" name="chiriH1" value="$$h1{chiri}"></td>
-<td><input type="text" name="butsuriH1" value="$$h1{butsuri}"></td>
-<td><input type="text" name="kagakuH1" value="$$h1{kagaku}"></td>
-<td><input type="text" name="seibutsuH1" value="$$h1{seibutsu}"></td>
+<td><input type="text" name="kokugoH1" value="@{[htescape $$h1{kokugo}]}"></td>
+<td><input type="text" name="suugakuH1" value="@{[htescape $$h1{suugaku}]}"></td>
+<td><input type="text" name="eigoH1" value="@{[htescape $$h1{eigo}]}"></td>
+<td><input type="text" name="sekaishiH1" value="@{[htescape $$h1{sekaishi}]}"></td>
+<td><input type="text" name="nihonshiH1" value="@{[htescape $$h1{nihonshi}]}"></td>
+<td><input type="text" name="chiriH1" value="@{[htescape $$h1{chiri}]}"></td>
+<td><input type="text" name="butsuriH1" value="@{[htescape $$h1{butsuri}]}"></td>
+<td><input type="text" name="kagakuH1" value="@{[htescape $$h1{kagaku}]}"></td>
+<td><input type="text" name="seibutsuH1" value="@{[htescape $$h1{seibutsu}]}"></td>
 </tr>
 <tr>
 <th>換算点</th>
-<td>$$k1{kokugo}</td><td>$$k1{suugaku}</td><td>$$k1{eigo}</td>
-<td>$$k1{sekaishi}</td><td>$$k1{nihonshi}</td><td>$$k1{chiri}</td>
-<td>$$k1{butsuri}</td><td>$$k1{kagaku}</td><td>$$k1{seibutsu}</td>
+<td>@{[htescape $$k1{kokugo}]}</td><td>@{[htescape $$k1{suugaku}]}</td><td>@{[htescape $$k1{eigo}]}</td>
+<td>@{[htescape $$k1{sekaishi}]}</td><td>@{[htescape $$k1{nihonshi}]}</td><td>@{[htescape $$k1{chiri}]}</td>
+<td>@{[htescape $$k1{butsuri}]}</td><td>@{[htescape $$k1{kagaku}]}</td><td>@{[htescape $$k1{seibutsu}]}</td>
 </tr>
 
 <tr>
 <th rowspan="3">二次</th><th>持ち点</th>
-<td><input type="text" name="kokugo2" value="$$p2{kokugo}"></td>
-<td><input type="text" name="suugaku2" value="$$p2{suugaku}"></td>
-<td><input type="text" name="eigo2" value="$$p2{eigo}"></td>
-<td><input type="text" name="sekaishi2" value="$$p2{sekaishi}"></td>
-<td><input type="text" name="nihonshi2" value="$$p2{nihonshi}"></td>
-<td><input type="text" name="chiri2" value="$$p2{chiri}"></td>
-<td><input type="text" name="butsuri2" value="$$p2{butsuri}"></td>
-<td><input type="text" name="kagaku2" value="$$p2{kagaku}"></td>
-<td><input type="text" name="seibutsu2" value="$$p2{seibutsu}"></td>
+<td><input type="text" name="kokugo2" value="@{[htescape $$p2{kokugo}]}"></td>
+<td><input type="text" name="suugaku2" value="@{[htescape $$p2{suugaku}]}"></td>
+<td><input type="text" name="eigo2" value="@{[htescape $$p2{eigo}]}"></td>
+<td><input type="text" name="sekaishi2" value="@{[htescape $$p2{sekaishi}]}"></td>
+<td><input type="text" name="nihonshi2" value="@{[htescape $$p2{nihonshi}]}"></td>
+<td><input type="text" name="chiri2" value="@{[htescape $$p2{chiri}]}"></td>
+<td><input type="text" name="butsuri2" value="@{[htescape $$p2{butsuri}]}"></td>
+<td><input type="text" name="kagaku2" value="@{[htescape $$p2{kagaku}]}"></td>
+<td><input type="text" name="seibutsu2" value="@{[htescape $$p2{seibutsu}]}"></td>
 </tr>
 <tr>
 <th>配点</th>
-<td><input type="text" name="kokugoH2" value="$$h2{kokugo}"></td>
-<td><input type="text" name="suugakuH2" value="$$h2{suugaku}"></td>
-<td><input type="text" name="eigoH2" value="$$h2{eigo}"></td>
-<td><input type="text" name="sekaishiH2" value="$$h2{sekaishi}"></td>
-<td><input type="text" name="nihonshiH2" value="$$h2{nihonshi}"></td>
-<td><input type="text" name="chiriH2" value="$$h2{chiri}"></td>
-<td><input type="text" name="butsuriH2" value="$$h2{butsuri}"></td>
-<td><input type="text" name="kagakuH2" value="$$h2{kagaku}"></td>
-<td><input type="text" name="seibutsuH2" value="$$h2{seibutsu}"></td>
+<td><input type="text" name="kokugoH2" value="@{[htescape $$h2{kokugo}]}"></td>
+<td><input type="text" name="suugakuH2" value="@{[htescape $$h2{suugaku}]}"></td>
+<td><input type="text" name="eigoH2" value="@{[htescape $$h2{eigo}]}"></td>
+<td><input type="text" name="sekaishiH2" value="@{[htescape $$h2{sekaishi}]}"></td>
+<td><input type="text" name="nihonshiH2" value="@{[htescape $$h2{nihonshi}]}"></td>
+<td><input type="text" name="chiriH2" value="@{[htescape $$h2{chiri}]}"></td>
+<td><input type="text" name="butsuriH2" value="@{[htescape $$h2{butsuri}]}"></td>
+<td><input type="text" name="kagakuH2" value="@{[htescape $$h2{kagaku}]}"></td>
+<td><input type="text" name="seibutsuH2" value="@{[htescape $$h2{seibutsu}]}"></td>
 </tr>
 <tr>
 <th>換算点</th>
-<td>$$k2{kokugo}</td><td>$$k2{suugaku}</td><td>$$k2{eigo}</td>
-<td>$$k2{sekaishi}</td><td>$$k2{nihonshi}</td><td>$$k2{chiri}</td>
-<td>$$k2{butsuri}</td><td>$$k2{kagaku}</td><td>$$k2{seibutsu}</td>
+<td>@{[htescape $$k2{kokugo}]}</td><td>@{[htescape $$k2{suugaku}]}</td><td>@{[htescape $$k2{eigo}]}</td>
+<td>@{[htescape $$k2{sekaishi}]}</td><td>@{[htescape $$k2{nihonshi}]}</td><td>@{[htescape $$k2{chiri}]}</td>
+<td>@{[htescape $$k2{butsuri}]}</td><td>@{[htescape $$k2{kagaku}]}</td><td>@{[htescape $$k2{seibutsu}]}</td>
 </tr>
 </tbody>
 </table>
@@ -241,24 +249,24 @@ input	{width: 3em}
 <tbody>
 <tr>
 <th>一次</th>
-<td>$$k1{_PERCENT}</td>
-<td><input type="text" name="OBJECT_1" value="$$p1{_OBJECT}"></td>
-<td>$$k1{_DIFF}</td>
-<td>$$k1{_DIFFMARK}</td>
+<td>@{[htescape $$k1{_PERCENT}]}</td>
+<td><input type="text" name="OBJECT_1" value="@{[htescape $$p1{_OBJECT}]}"></td>
+<td>@{[htescape $$k1{_DIFF}]}</td>
+<td>@{[htescape $$k1{_DIFFMARK}]}</td>
 </tr>
 <tr>
 <th>二次</th>
-<td>$$k2{_PERCENT}</td>
-<td><input type="text" name="OBJECT_2" value="$$p2{_OBJECT}"></td>
-<td>$$k2{_DIFF}</td>
-<td>$$k2{_DIFFMARK}</td>
+<td>@{[htescape $$k2{_PERCENT}]}</td>
+<td><input type="text" name="OBJECT_2" value="@{[htescape $$p2{_OBJECT}]}"></td>
+<td>@{[htescape $$k2{_DIFF}]}</td>
+<td>@{[htescape $$k2{_DIFFMARK}]}</td>
 </tr>
 <tr>
 <th>合計</th>
-<td>$misc{percent}</td>
-<td>$misc{object}</td>
-<td>$misc{_DIFF}</td>
-<td>$misc{_DIFFMARK}</td>
+<td>@{[htescape $misc{percent}]}</td>
+<td>@{[htescape $misc{object}]}</td>
+<td>@{[htescape $misc{_DIFF}]}</td>
+<td>@{[htescape $misc{_DIFFMARK}]}</td>
 </tr>
 </tbody>
 </table>
@@ -270,7 +278,7 @@ input	{width: 3em}
 </form>
 
 <div class="navigation">
-[<a href="/gate/cvs/perl/kanzan/" lang="en">source</a>]
+[<a href="http://suika.fam.cx/gate/git/wi/misc/kanzan-2002.git/tree" lang="en">source</a>]
 [<a href="intro">説明</a>]
 </div>
 </body>
@@ -312,7 +320,7 @@ sub __get_parameter () {
 
 =head1 LICENSE
 
-Copyright 2001-2004 Wakaba E<lt>w@suika.fam.cxE<gt>.
+Copyright 2001-2011 Wakaba E<lt>w@suika.fam.cxE<gt>.
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -331,5 +339,4 @@ Boston, MA 02111-1307, USA.
 
 =cut
 
-1;	# $Date: 2004/11/16 07:37:01 $
-
+1;
