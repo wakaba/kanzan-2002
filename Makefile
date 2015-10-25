@@ -17,10 +17,6 @@ updatenightly: local/bin/pmbp.pl
 deps: always
 	true # dummy for make -q
 ifdef PMBP_HEROKU_BUILDPACK
-	git init
-	mv dot.gitmodules .gitmodules
-	git add .gitmodules
-	$(MAKE) git-submodules
 else
 	$(MAKE) git-submodules
 endif

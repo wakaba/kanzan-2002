@@ -1,0 +1,16 @@
+machine:
+dependencies:
+  override:
+    - make deps
+test:
+  override:
+    - make test
+    - ./plackup -p 5114 -t Twiggy bin/server.psgi :
+       background: true
+    - sleep 10
+    - curl http://localhost:5114
+deployment:
+  heroku:
+    branch: master
+    heroku:
+      appname: kanzan
