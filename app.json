@@ -1,0 +1,7 @@
+{
+  "name": "kanzan",
+  "website": "http://suika.suikawiki.org/chuubu/tool/kanzan/",
+  "buildpacks": [
+    {"url": "https://github.com/wakaba/heroku-buildpack-perl-pmbp"}
+  ]
+}
