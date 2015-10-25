@@ -281,6 +281,16 @@ input	{width: 3em}
 [<a href="http://suika.fam.cx/gate/git/wi/misc/kanzan-2002.git/tree" lang="en">source</a>]
 [<a href="intro">¿‚Ã¿</a>]
 </div>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-24580106-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
 </body>
 </html>
 EOH
@@ -320,7 +330,7 @@ sub __get_parameter () {
 
 =head1 LICENSE
 
-Copyright 2001-2011 Wakaba E<lt>w@suika.fam.cxE<gt>.
+Copyright 2001-2015 Wakaba <wakaba@suikawiki.org>.
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
