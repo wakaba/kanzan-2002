@@ -19,6 +19,9 @@ return sub {
   return $app->execute_by_promise (sub {
     my $path = $app->path_segments;
 
+    $http->set_response_header
+        ('Strict-Transport-Security' => 'max-age=2592000; includeSubDomains; preload');
+
     if (@$path == 1 and
         ($path->[0] eq '' or
          $path->[0] eq 'intro' or
