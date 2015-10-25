@@ -153,11 +153,12 @@ sub output_html (%%%%%) {
 <html lang="ja">
 <head>
 <title>配点換算</title>
-<link rev="made" href="mailto:w\@suika.fam.cx">
+<link rev="made" href="mailto:wakaba\@suikawiki.org">
 <link rel="contents" href="http://tomikou.net/tokshuu/kanzan.html" title="換算点算出システム
 ">
-<link rel="contents" href="/chuubu/">
-<link rel="stylesheet" href="/s/default/xhtml1" media="all">
+<link rel="contents" href="http://suika.suikawiki.org/chuubu/">
+<link rel="stylesheet" href="https://suikaweb.herokuapp.com/s/default/xhtml1" media="all">
+<link rel="stylesheet" href="http://suika.suikawiki.org/s/default/xhtml1" media="all">
 <link rel="help" href="intro" title="説明" />
 <style type="text/css" media="all">
 input	{width: 3em}
@@ -278,7 +279,7 @@ input	{width: 3em}
 </form>
 
 <div class="navigation">
-[<a href="http://suika.fam.cx/gate/git/wi/misc/kanzan-2002.git/tree" lang="en">source</a>]
+[<a href="http://suika.suikawiki.org/gate/git/wi/misc/kanzan-2002.git/tree" lang="en">source</a>]
 [<a href="intro">説明</a>]
 </div>
 
