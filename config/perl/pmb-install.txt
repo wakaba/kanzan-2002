@@ -1,6 +1,7 @@
 Scalar::Util~1.42
 Pod::Usage~1.67
 IO::Handle~1.28
+Pod::Text~3.18
 File::Spec~3.47
 Test::NoWarnings~1.04
 Encode~2.78
@@ -10,6 +11,7 @@ Time::Local~1.2300
 Path::Tiny~0.072
 parent~0.234
 Exporter::Lite~0.06
+Test::Tester~0.114
 Time::HiRes~1.9726
 Exporter~5.72
 Carp~1.36
