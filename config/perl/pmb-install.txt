@@ -5,7 +5,7 @@ Pod::Text~3.18
 File::Spec~3.47
 Test::NoWarnings~1.04
 Encode~2.78
-Unicode::Normalize~1.21
+Unicode::Normalize~1.23
 AnyEvent::Util
 Time::Local~1.2300
 Path::Tiny~0.072
