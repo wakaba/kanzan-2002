@@ -1,0 +1,19 @@
+{
+  "travisci": {
+    "pmbp": "5.8+",
+    "merger": 1,
+    "notifications": "suika"
+  },
+  "circleci": {
+    "pmbp": 1,
+    "heroku": 1,
+    "merger": 1,
+    "gaa": 1,
+    "tests": [
+      {"./plackup -p 5114 -t Twiggy::Prefork bin/server.psgi":
+         {"background": true}},
+      "sleep 10",
+      "curl -f http://localhost:5114"
+    ]
+  }
+}
