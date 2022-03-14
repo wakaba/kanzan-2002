@@ -105,7 +105,10 @@
    "workflows" : {
       "build" : {
          "jobs" : [
-            "build"
+            {
+               "build" : {
+               }
+            }
          ]
       },
       "gaa4" : {
