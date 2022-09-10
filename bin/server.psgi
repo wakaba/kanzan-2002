@@ -19,7 +19,7 @@ return sub {
     $http->set_response_header
         ('Strict-Transport-Security' => 'max-age=2592000; includeSubDomains; preload');
 
-    return Kanzan->main ($app, $path);
+    return Kanzan->main ($app, $path, undef);
   });
 };
 

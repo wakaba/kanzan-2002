@@ -7,8 +7,8 @@ use Promised::Command;
 my $RootPath = path (__FILE__)->parent->parent->absolute;
 my $Intro = $RootPath->child ('intro.ja.html')->slurp;
 
-sub main ($$$) {
-  my ($class, $app, $path) = @_;
+sub main ($$$;$) {
+  my ($class, $app, $path, $perl_path) = @_;
   
     if (@$path == 1 and
         ($path->[0] eq '' or
@@ -20,7 +20,7 @@ sub main ($$$) {
       $app->http->send_response_body_as_ref (\$Intro);
       return $app->http->close_response_body;
     } elsif (@$path == 1 and $path->[0] eq 'kanzan') {
-      my $cmd = Promised::Command->new ([$RootPath->child ('perl'), $RootPath->child ('kanzan.cgi')]);
+      my $cmd = Promised::Command->new ([$perl_path || $RootPath->child ('perl'), $RootPath->child ('kanzan.cgi')]);
       $cmd->envs->{REQUEST_METHOD} = $app->http->request_method;
       $cmd->envs->{QUERY_STRING} = $app->http->original_url->{query};
       $cmd->envs->{CONTENT_LENGTH} = $app->http->request_body_length;
