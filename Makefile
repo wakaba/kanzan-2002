@@ -39,7 +39,7 @@ pmbp-install: pmbp-upgrade
             --create-perl-command-shortcut @prove \
 	    --create-perl-command-shortcut @plackup=perl\ modules/twiggy-packed/script/plackup
 
-heroku-deploy-heroku: 
+deploy-heroku: 
 	git checkout --orphan herokucommit && git commit -m "Heroku base"
 	make create-commit-for-heroku
 	git push git@heroku.com:$$HEROKU_APP_NAME.git +`git rev-parse HEAD`:master
