@@ -42,15 +42,7 @@ pmbp-install: pmbp-upgrade
             --create-perl-command-shortcut @prove \
 	    --create-perl-command-shortcut @plackup=perl\ modules/twiggy-packed/script/plackup
 
-build: local local/misc-a1.txt intro.ja.html kanzan.cgi
-
-intro.ja.html: intro.ja.html.orig local/misc-a1.txt
-	perl -p -e 's{<!--FooterA1-->}{open F,"local/misc-a1.txt";local$$/=undef;<F>}e;$$_' < intro.ja.html.orig > $@
-kanzan.cgi: kanzan.cgi.orig local/misc-a1.txt
-	perl -p -e 's{<!--FooterA1-->}{open F,"local/misc-a1.txt";local$$/=undef;<F>}e;$$_' < kanzan.cgi.orig > $@
-
-local/misc-a1.txt:
-	$(CURL) -sSf https://gist.githubusercontent.com/wakaba/e6ba0fb1c4a75c0d4824e1d27107342e/raw/misc-a1.txt > $@
+build: 
 
 create-commit-for-heroku:
 	git remote rm origin
